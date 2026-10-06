@@ -68,3 +68,10 @@ body {
     margin-top: 0.25rem;
     display: none; 
 }
+
+.btn-delete-prod {
+    white-space: nowrap;
+    font-size: 0.8rem;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+}
