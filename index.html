@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InvoiceHub - ITLA</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-purple shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">InvoiceHub ITLA</a>
+        </div>
+    </nav>
+
+    <main class="container mt-5">
+        <form id="invoice-form">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-10">
+                    
+                    <!-- business details -->
+                    <div class="card">
+                        <div class="card-header bg-purple">
+                            <h5 class="mb-0">1. Datos del negocio</h5>
+                        </div>
+                        <div class="card-body" id="business-container">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Nombre del negocio *</label>
+                                    <input type="text" id="biz-name" class="form-control">
+                                    <div class="error-message" id="err-biz-name"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">RNC o identificación *</label>
+                                    <input type="text" id="biz-id" class="form-control">
+                                    <div class="error-message" id="err-biz-id"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Teléfono *</label>
+                                    <input type="text" id="biz-phone" class="form-control">
+                                    <div class="error-message" id="err-biz-phone"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Correo electrónico *</label>
+                                    <input type="email" id="biz-email" class="form-control">
+                                    <div class="error-message" id="err-biz-email"></div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label">Dirección *</label>
+                                    <input type="text" id="biz-address" class="form-control">
+                                    <div class="error-message" id="err-biz-address"></div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label">URL del logo (Opcional)</label>
+                                    <input type="url" id="biz-logo" class="form-control" placeholder="https://ejemplo.com/logo.png">
+                                    <div class="error-message" id="err-biz-logo"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- client details -->
+                    <div class="card">
+                        <div class="card-header bg-purple">
+                            <h5 class="mb-0">2. Datos del cliente</h5>
+                        </div>
+                        <div class="card-body" id="client-container">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Nombre del cliente *</label>
+                                    <input type="text" id="client-name" class="form-control">
+                                    <div class="error-message" id="err-client-name"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Identificación o RNC *</label>
+                                    <input type="text" id="client-id" class="form-control">
+                                    <div class="error-message" id="err-client-id"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Teléfono *</label>
+                                    <input type="text" id="client-phone" class="form-control">
+                                    <div class="error-message" id="err-client-phone"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Correo electrónico *</label>
+                                    <input type="email" id="client-email" class="form-control">
+                                    <div class="error-message" id="err-client-email"></div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label">Dirección *</label>
+                                    <input type="text" id="client-address" class="form-control">
+                                    <div class="error-message" id="err-client-address"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- document details -->
+                    <div class="card">
+                        <div class="card-header bg-purple">
+                            <h5 class="mb-0">3. Datos del Documento</h5>
+                        </div>
+                        <div class="card-body" id="doc-container">
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <label class="form-label">Tipo de documento *</label>
+                                    <select id="doc-type" class="form-select">
+                                        <option value="Cotización">Cotización</option>
+                                        <option value="Factura">Factura</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Número de documento *</label>
+                                    <input type="text" id="doc-number" class="form-control">
+                                    <div class="error-message" id="err-doc-number"></div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Moneda *</label>
+                                    <select id="doc-currency" class="form-select">
+                                        <option value="DOP">DOP</option>
+                                        <option value="USD">USD</option>
+                                        <option value="EUR">EUR</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Fecha de emisión *</label>
+                                    <input type="date" id="doc-issue-date" class="form-control">
+                                    <div class="error-message" id="err-doc-issue-date"></div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Fecha de vencimiento *</label>
+                                    <input type="date" id="doc-due-date" class="form-control">
+                                    <div class="error-message" id="err-doc-due-date"></div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Estado *</label>
+                                    <select id="doc-status" class="form-select">
+                                        <option value="Pendiente">Pendiente</option>
+                                        <option value="Aprobada">Aprobada</option>
+                                        <option value="Rechazada">Rechazada</option>
+                                        <option value="Pagada">Pagada</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- products or services -->
+                    <div class="card border-primary">
+                        <div class="card-header bg-purple">
+                            <h5 class="mb-0">4. Productos o Servicios</h5>
+                        </div>
+                        <div class="card-body">
+                            <!-- column headers -->
+                            <div class="row fw-bold text-muted mb-2 d-none d-md-flex">
+                                <div class="col-md-3">Descripción *</div>
+                                <div class="col-md-2">Cant. *</div>
+                                <div class="col-md-2">Precio *</div>
+                                <div class="col-md-2">Desc. (%)</div>
+                                <div class="col-md-2">Subtotal</div>
+                                <div class="col-md-1"></div>
+                            </div>
+                            
+                            <!-- dynamic rows container -->
+                            <div id="products-container">
+                                <!-- JS will inject product rows here -->
+                            </div>
+                            
+                            <button type="button" id="btn-add-product" class="btn btn-outline-lilac mt-3">
+                                + Agregar producto o servicio
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- taxes and summary -->
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <div class="card h-100 mb-0">
+                                <div class="card-header bg-purple">
+                                    <h5 class="mb-0">5. Configuración de Impuestos</h5>
+                                </div>
+                                <div class="card-body" id="tax-container">
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="tax-apply">
+                                        <label class="form-check-label" for="tax-apply">Aplicar impuesto</label>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Porcentaje de impuesto (%)</label>
+                                        <input type="number" id="tax-percent" class="form-control" disabled>
+                                        <div class="error-message" id="err-tax-percent"></div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Descuento general (%)</label>
+                                        <input type="number" id="tax-general-discount" class="form-control" value="0">
+                                        <div class="error-message" id="err-tax-general-discount"></div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Aplicación del descuento *</label>
+                                        <select id="tax-discount-type" class="form-select">
+                                            <option value="before">Aplicar descuento antes del impuesto</option>
+                                            <option value="after">Aplicar descuento después del impuesto</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="card h-100 mb-0">
+                                <div class="card-header bg-purple">
+                                    <h5 class="mb-0">6. Resumen de Cálculos</h5>
+                                </div>
+                                <div class="card-body bg-light rounded-bottom">
+                                    <div class="d-flex justify-content-between mb-2 border-bottom pb-2">
+                                        <span>Cantidad de artículos:</span>
+                                        <strong id="sum-qty">0</strong>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2">
+                                        <span>Subtotal bruto:</span>
+                                        <strong id="sum-gross">0.00</strong>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2 text-danger">
+                                        <span>Descuento por productos:</span>
+                                        <strong id="sum-prod-discount">0.00</strong>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2 border-bottom pb-2">
+                                        <span>Subtotal (después de desc.):</span>
+                                        <strong id="sum-net">0.00</strong>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2 text-danger">
+                                        <span>Descuento general:</span>
+                                        <strong id="sum-gen-discount">0.00</strong>
+                                    </div>
+                                    <div class="d-flex justify-content-between mb-2 text-primary">
+                                        <span>Impuesto:</span>
+                                        <strong id="sum-tax">0.00</strong>
+                                    </div>
+                                    <div class="d-flex justify-content-between mt-3 pt-3 border-top border-2 border-primary fs-5">
+                                        <strong>Total final:</strong>
+                                        <strong id="sum-total" class="text-success">0.00</strong>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- action buttons -->
+                    <div class="text-end mb-5 mt-4">
+                        <button type="button" id="btn-generate" class="btn btn-primary-custom btn-lg px-5 shadow">Generar documento</button>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+
+        <!-- generated document view -->
+        <section id="generated-document" class="mt-5 pb-5"></section>
+    </main>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
